@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Wrapper {
+	private static final int COLOR_CODE_LENGTH = 2; // Contains the total length of colors codes to avoic getting NumberFormatException s
 	public List<EnchantWrapper> getWrappers(ItemStack item) {
 		if (item == null) return null;
 		if (!item.hasItemMeta()) return null;
@@ -21,7 +22,7 @@ public class Wrapper {
 			if (enchant.hasEnchant(item)) {
 				for (String lore : item.getItemMeta().getLore()) {
 					if (lore.contains(enchant.getName())) {
-						wrappers.add(new EnchantWrapper(enchant, Integer.parseInt(lore.substring(enchant.getName().length()))));
+						wrappers.add(new EnchantWrapper(enchant, Integer.parseInt(lore.substring(COLOR_CODE_LENGTH + enchant.getName().length() + 1)))); // +1 bc of the space
 						break;
 					}
 				}
