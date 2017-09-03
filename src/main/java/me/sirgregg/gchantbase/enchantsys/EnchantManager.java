@@ -3,7 +3,9 @@ package me.sirgregg.gchantbase.enchantsys;
 import org.bukkit.ChatColor;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Map;
 
 public class EnchantManager {
 	private HashMap<String, BaseEnchant> registeredEnchants = new HashMap<>();
@@ -46,4 +48,7 @@ public class EnchantManager {
 		return false;
 	}
 
+	public Map<String, BaseEnchant> getRegisteredEnchants() {
+		return Collections.unmodifiableMap(registeredEnchants);
+	}
 }

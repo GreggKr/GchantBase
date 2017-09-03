@@ -7,21 +7,20 @@ import org.bukkit.Material;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.UUID;
 
 public class BaseEnchant implements Listener {
 	private String name;
 	private List<Material> applicable;
-	private HashMap<UUID, ArrayList<ItemStack>> running = new HashMap<>();
 	private EnchantType type;
+	int minLevel, maxLevel;
 
-	public BaseEnchant(String name, List<Material> applicable, EnchantType type) {
+	public BaseEnchant(String name, int minLevel, int maxLevel, List<Material> applicable, EnchantType type) {
 		this.name = name;
 		this.applicable = applicable;
 		this.type = type;
+		this.minLevel = minLevel;
+		this.maxLevel = maxLevel;
 
 		Bukkit.getPluginManager().registerEvents(this, GchantBase.getInstance());
 	}
@@ -63,7 +62,11 @@ public class BaseEnchant implements Listener {
 		return type;
 	}
 
-	public HashMap<UUID, ArrayList<ItemStack>> getRunning() {
-		return running;
+	public int getMaxLevel() {
+		return maxLevel;
+	}
+
+	public int getMinLevel() {
+		return minLevel;
 	}
 }
