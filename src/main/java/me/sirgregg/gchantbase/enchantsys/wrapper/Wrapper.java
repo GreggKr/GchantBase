@@ -22,7 +22,9 @@ public class Wrapper {
 			if (enchant.hasEnchant(item)) {
 				for (String lore : item.getItemMeta().getLore()) {
 					if (lore.contains(enchant.getName())) {
-						wrappers.add(new EnchantWrapper(enchant, Integer.parseInt(lore.substring(COLOR_CODE_LENGTH + enchant.getName().length() + 1)))); // +1 bc of the space
+						int level = GchantBase.getRomanNumberalUtil().decode(lore.substring(COLOR_CODE_LENGTH + enchant.getName().length() + 1));
+
+						wrappers.add(new EnchantWrapper(enchant, level));
 						break;
 					}
 				}
