@@ -8,6 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
+import java.util.Objects;
 
 public class BaseEnchant implements Listener {
 	private String name;
@@ -36,7 +37,6 @@ public class BaseEnchant implements Listener {
 
 		for (String string : item.getItemMeta().getLore()) {
 			if (string.startsWith(ChatColor.GRAY + name)) return true;
-			break;
 		}
 		return false;
 	}
@@ -48,6 +48,20 @@ public class BaseEnchant implements Listener {
 			}
 		}
 		return false;
+	}
+
+	public int getLevel(ItemStack item) {
+		Objects.requireNonNull(item);
+
+		if (!hasEnchant(item)) return -1;
+
+		for (String line : item.getItemMeta().getLore()) {
+			if (line.startsWith(ChatColor.GRAY + name)) {
+				return GchantBase.getRomanNumberalUtil().decode(line.substring(name.length() + 3));
+			}
+		}
+
+		return -1;
 	}
 
 	public String getName() {

@@ -13,6 +13,20 @@ public class EnchantManager {
 	public void setupEnchants() {
 	}
 
+//	public int getLevel(ItemStack item, BaseEnchant enchant) {
+//		Objects.requireNonNull(item);
+//		Objects.requireNonNull(enchant);
+//
+//		if (!enchant.hasEnchant(item)) return -1;
+//
+//		for (String line : item.getItemMeta().getLore()) {
+//			if (line.startsWith(ChatColor.GRAY + enchant.getName())) {
+//				return GchantBase.getRomanNumberalUtil().decode(line.substring(enchant.getName().length() + 3));
+//			}
+//		}
+//		return -1;
+//	}
+
 	public void registerEnchant(BaseEnchant enchant) {
 		if (!registeredEnchants.containsKey(enchant.getName())) {
 			registeredEnchants.put(enchant.getName(), enchant);
@@ -43,7 +57,6 @@ public class EnchantManager {
 
 		for (String string : item.getItemMeta().getLore()) {
 			if (string.startsWith(ChatColor.GRAY + enchant.getName())) return true;
-			break;
 		}
 		return false;
 	}
