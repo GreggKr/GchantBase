@@ -6,6 +6,7 @@ public class EnchantWrapper {
 	private BaseEnchant enchant;
 	private int level;
 
+	@Deprecated
 	public EnchantWrapper(BaseEnchant enchant, int level) {
 		this.enchant = enchant;
 		this.level = level;
