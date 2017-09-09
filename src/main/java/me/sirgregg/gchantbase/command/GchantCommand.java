@@ -65,7 +65,7 @@ public class GchantCommand implements CommandExecutor {
 			int level;
 
 			try {
-				level = Integer.parseInt(args[1]);
+				level = Integer.parseInt(args[2]);
 			} catch (NumberFormatException e) {
 				player.sendMessage(format(lang.getString("gchant-command.enchant.incorrect-args")));
 				return false;
