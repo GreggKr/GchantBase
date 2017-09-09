@@ -1,0 +1,11 @@
+player-only: "&cYou must be a player to do that."
+no-permission: "&cYou do not have permission to do that."
+
+gchant-command:
+  help:
+  - "&9-------------[ &bGchants &9]-------------"
+  - "&9/gchant enchant <enchant> <level> - Enchants an item with a custom enchant."
+  enchant:
+    nothing-in-hand: "&cYou must have an item in your hand."
+    incorrect-args: "&cIncorrect usage! Correct usage: /gc enchant <enchant> <level>"
+    invalid-enchant: "&cThat is not a valid enchant."
