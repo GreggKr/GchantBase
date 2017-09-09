@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static me.sirgregg.gchantbase.util.StringUtil.format;
@@ -71,14 +72,24 @@ public class GchantCommand implements CommandExecutor {
 				return false;
 			}
 
+			if (level < enchant.getMinLevel() || level > enchant.getMaxLevel()) {
+				player.sendMessage(format(lang.getString("gchant-command.enchant.invalid-level")));
+				return false;
+			}
+
 			ItemStack item = player.getItemInHand();
 			ItemMeta meta = item.getItemMeta();
 
 			List<String> lore = meta.getLore();
+
+			if (lore == null) lore = new ArrayList<>();
+
 			lore.add(0, format("&7" + enchant.getName() + " " + GchantBase.getRomanNumberalUtil().encode(level))); // TODO: Add it to the bottom of the enchant list (to avoid weird formatting)
 
 			meta.setLore(lore);
 			item.setItemMeta(meta);
+
+			player.sendMessage(format(lang.getString("gchant-command.enchant.enchanted")));
 		} else {
 			if (!player.hasPermission("gchant.command.help")) {
 				player.sendMessage(format(lang.getString("no-permission")));
