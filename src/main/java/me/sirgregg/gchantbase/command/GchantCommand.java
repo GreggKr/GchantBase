@@ -45,7 +45,7 @@ public class GchantCommand implements CommandExecutor {
 			1 -> enchant name
 			2 -> level
 			 */
-			if (args.length > 3) {
+			if (args.length < 3) {
 				player.sendMessage(format(lang.getString("gchant-command.enchant.incorrect-args")));
 				return false;
 			}
@@ -75,7 +75,7 @@ public class GchantCommand implements CommandExecutor {
 			ItemMeta meta = item.getItemMeta();
 
 			List<String> lore = meta.getLore();
-			lore.add(0, format("&7" + enchant.getName() + " " + level)); // TODO: Add it to the bottom of the enchant list (to avoid weird formatting)
+			lore.add(0, format("&7" + enchant.getName() + " " + GchantBase.getRomanNumberalUtil().encode(level))); // TODO: Add it to the bottom of the enchant list (to avoid weird formatting)
 
 			meta.setLore(lore);
 			item.setItemMeta(meta);
