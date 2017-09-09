@@ -1,5 +1,6 @@
 package me.sirgregg.gchantbase;
 
+import me.sirgregg.gchantbase.command.GchantCommand;
 import me.sirgregg.gchantbase.enchantsys.EnchantManager;
 import me.sirgregg.gchantbase.enchantsys.wrapper.Wrapper;
 import me.sirgregg.gchantbase.util.RomanNumberalUtil;
@@ -18,6 +19,7 @@ public class GchantBase extends JavaPlugin {
 		wrapper = new Wrapper();
 
 		//registerConfig();
+		registerCommands();
 
 		enchantManager.setupEnchants();
 		romanNumberalUtil = new RomanNumberalUtil();
@@ -25,6 +27,10 @@ public class GchantBase extends JavaPlugin {
 
 	private void registerConfig() {
 		getConfig().options().copyDefaults(true);
+	}
+
+	private void registerCommands() {
+		getCommand("gchant").setExecutor(new GchantCommand());
 	}
 
 	public static Wrapper getWrapper() {
