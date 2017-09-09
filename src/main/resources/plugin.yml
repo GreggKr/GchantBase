@@ -1,5 +1,18 @@
 name: GchantBase
 main: me.sirgregg.gchantbase.GchantBase
-version: 1.1
+version: 1.2
 description: Base plugin for Gchant.
 author: SirGregg
+
+commands:
+  gchant:
+    description: Main command for GchantBase
+    aliases: [customenchant, ce, gc]
+
+permissions:
+  gchant.command.help:
+    description: Allows you to use /gc help
+    default: true
+  gchant.command.enchant:
+    description: Allows you to use /gc enchant
+    default: op
