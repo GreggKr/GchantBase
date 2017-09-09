@@ -9,3 +9,5 @@ gchant-command:
     nothing-in-hand: "&cYou must have an item in your hand."
     incorrect-args: "&cIncorrect usage! Correct usage: /gc enchant <enchant> <level>"
     invalid-enchant: "&cThat is not a valid enchant."
+    invalid-level: "&cThe level you entered is either too low or too high."
+    enchanted: "&aSuccessfully enchanted your item."
