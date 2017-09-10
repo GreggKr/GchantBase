@@ -13,13 +13,13 @@ import java.util.Objects;
 public class BaseEnchant implements Listener {
 	private String name;
 	private List<Material> applicable;
-	private EnchantType type;
-	int minLevel, maxLevel;
+	private ChatColor color;
+	private int minLevel, maxLevel;
 
-	public BaseEnchant(String name, int minLevel, int maxLevel, List<Material> applicable, EnchantType type) {
+	public BaseEnchant(String name, int minLevel, int maxLevel, ChatColor color, List<Material> applicable) {
 		this.name = name;
 		this.applicable = applicable;
-		this.type = type;
+		this.color = color;
 		this.minLevel = minLevel;
 		this.maxLevel = maxLevel;
 
@@ -72,15 +72,15 @@ public class BaseEnchant implements Listener {
 		return applicable;
 	}
 
-	public EnchantType getType() {
-		return type;
-	}
-
 	public int getMaxLevel() {
 		return maxLevel;
 	}
 
 	public int getMinLevel() {
 		return minLevel;
+	}
+
+	public ChatColor getColor() {
+		return color;
 	}
 }
