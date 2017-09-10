@@ -56,7 +56,7 @@ public class EnchantManager {
 		if (!item.getItemMeta().hasLore()) return false;
 
 		for (String string : item.getItemMeta().getLore()) {
-			if (string.startsWith(ChatColor.GRAY + enchant.getName())) return true;
+			if (string.startsWith(enchant.getColor() + enchant.getName())) return true;
 		}
 		return false;
 	}

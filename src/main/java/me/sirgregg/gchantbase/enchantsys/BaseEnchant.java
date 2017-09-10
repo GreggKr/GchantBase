@@ -56,7 +56,7 @@ public class BaseEnchant implements Listener {
 		if (!hasEnchant(item)) return -1;
 
 		for (String line : item.getItemMeta().getLore()) {
-			if (line.startsWith(ChatColor.GRAY + name)) {
+			if (line.startsWith(color + name)) {
 				return GchantBase.getRomanNumberalUtil().decode(line.substring(name.length() + 3));
 			}
 		}
