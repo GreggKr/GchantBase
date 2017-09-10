@@ -44,10 +44,10 @@ public class BaseEnchant implements Listener {
 	public boolean itemsHaveEnchants(ItemStack[] items) {
 		for (ItemStack item : items) {
 			if (hasEnchant(item)) {
-				return true;
-			}
+				continue;
+			} else return false;
 		}
-		return false;
+		return true;
 	}
 
 	public int getLevel(ItemStack item) {
