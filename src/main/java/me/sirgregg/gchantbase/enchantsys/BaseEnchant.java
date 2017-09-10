@@ -36,7 +36,7 @@ public class BaseEnchant implements Listener {
 		if (!item.getItemMeta().hasLore()) return false;
 
 		for (String string : item.getItemMeta().getLore()) {
-			if (string.startsWith(ChatColor.GRAY + name)) return true;
+			if (string.startsWith(color + name)) return true;
 		}
 		return false;
 	}
