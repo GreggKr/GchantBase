@@ -3,6 +3,7 @@ package me.sirgregg.gchantbase.enchantsys;
 import org.bukkit.Material;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public enum MaterialPresets {
@@ -14,6 +15,8 @@ public enum MaterialPresets {
 			Material.LEATHER_CHESTPLATE, Material.GOLD_CHESTPLATE, Material.CHAINMAIL_CHESTPLATE, Material.IRON_CHESTPLATE, Material.DIAMOND_CHESTPLATE,
 			Material.LEATHER_LEGGINGS, Material.GOLD_LEGGINGS, Material.CHAINMAIL_LEGGINGS, Material.IRON_LEGGINGS, Material.DIAMOND_LEGGINGS,
 			Material.LEATHER_BOOTS, Material.GOLD_BOOTS, Material.CHAINMAIL_BOOTS, Material.IRON_BOOTS, Material.DIAMOND_BOOTS)),
+
+	BOW(Collections.singletonList(Material.BOW)), // for consistency
 
 	SWORDS(Arrays.asList(Material.WOOD_SWORD, Material.STONE_SWORD, Material.GOLD_SWORD, Material.IRON_SWORD, Material.DIAMOND_SWORD)),
 	PICKAXES(Arrays.asList(Material.WOOD_PICKAXE, Material.STONE_PICKAXE, Material.GOLD_PICKAXE, Material.IRON_PICKAXE, Material.DIAMOND_PICKAXE)),
