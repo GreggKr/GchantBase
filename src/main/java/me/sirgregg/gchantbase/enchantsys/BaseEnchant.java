@@ -1,22 +1,23 @@
 package me.sirgregg.gchantbase.enchantsys;
 
 import me.sirgregg.gchantbase.GchantBase;
+import me.sirgregg.gchantbase.util.RomanNumeralUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class BaseEnchant implements Listener {
 	private String name;
-	private List<Material> applicable;
+	private Set<Material> applicable;
 	private ChatColor color;
-	private int minLevel, maxLevel;
+	private int minLevel;
+	private int maxLevel;
 
-	public BaseEnchant(String name, int minLevel, int maxLevel, ChatColor color, List<Material> applicable) {
+	public BaseEnchant(String name, int minLevel, int maxLevel, ChatColor color, EnumSet<Material> applicable) {
 		this.name = name;
 		this.applicable = applicable;
 		this.color = color;
@@ -57,7 +58,7 @@ public class BaseEnchant implements Listener {
 
 		for (String line : item.getItemMeta().getLore()) {
 			if (line.startsWith(color + name)) {
-				return GchantBase.getRomanNumberalUtil().decode(line.substring(name.length() + 3));
+				return RomanNumeralUtil.decode(line.substring(name.length() + 3));
 			}
 		}
 
@@ -68,8 +69,8 @@ public class BaseEnchant implements Listener {
 		return name;
 	}
 
-	public List<Material> getApplicable() {
-		return applicable;
+	public Set<Material> getApplicable() {
+		return Collections.unmodifiableSet(applicable);
 	}
 
 	public int getMaxLevel() {
