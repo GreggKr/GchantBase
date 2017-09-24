@@ -2,6 +2,7 @@ package me.sirgregg.gchantbase.command;
 
 import me.sirgregg.gchantbase.GchantBase;
 import me.sirgregg.gchantbase.enchantsys.BaseEnchant;
+import me.sirgregg.gchantbase.util.RomanNumeralUtil;
 import me.sirgregg.gchantbase.util.file.LangFileUtil;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -14,31 +15,31 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
-import static me.sirgregg.gchantbase.util.StringUtil.format;
+import static me.sirgregg.gchantbase.util.StringUtil.colorify;
 
 public class GchantCommand implements CommandExecutor {
 	private LangFileUtil lang = LangFileUtil.getLang();
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String commandLabel, String[] args) {
 		if (!(sender instanceof Player)) {
-			sender.sendMessage(format(lang.getString("player-only")));
-			return false;
+			sender.sendMessage(colorify(lang.getString("player-only")));
+			return true;
 		}
 		Player player = (Player) sender;
 
 		if (args.length == 0 || args[0].equalsIgnoreCase("help")) {
 			if (!player.hasPermission("gchant.command.help")) {
-				player.sendMessage(format(lang.getString("no-permission")));
-				return false;
+				player.sendMessage(colorify(lang.getString("no-permission")));
+				return true;
 			}
 
 			for (String string : lang.getStringList("gchant-command.help")) {
-				player.sendMessage(format(string));
+				player.sendMessage(colorify(string));
 			}
 		} else if (args[0].equalsIgnoreCase("enchant")) {
 			if (!player.hasPermission("gchant.command.enchant")) {
-				player.sendMessage(format(lang.getString("no-permission")));
-				return false;
+				player.sendMessage(colorify(lang.getString("no-permission")));
+				return true;
 			}
 
 			/*
@@ -47,20 +48,20 @@ public class GchantCommand implements CommandExecutor {
 			2 -> level
 			 */
 			if (args.length < 3) {
-				player.sendMessage(format(lang.getString("gchant-command.enchant.incorrect-args")));
-				return false;
+				player.sendMessage(colorify(lang.getString("gchant-command.enchant.incorrect-args")));
+				return true;
 			}
 
-			if (player.getItemInHand() == null || player.getItemInHand().getType().equals(Material.AIR)) {
-				player.sendMessage(format(lang.getString("gchant-command.enchant.nothing-in-hand")));
-				return false;
+			if (player.getItemInHand() == null || player.getItemInHand().getType() == Material.AIR) {
+				player.sendMessage(colorify(lang.getString("gchant-command.enchant.nothing-in-hand")));
+				return true;
 			}
 
 			BaseEnchant enchant = GchantBase.getEnchantManager().getEnchant(args[1]);
 
 			if (enchant == null) {
-				player.sendMessage(format(lang.getString("gchant-command.enchant.invalid-enchant")));
-				return false;
+				player.sendMessage(colorify(lang.getString("gchant-command.enchant.invalid-enchant")));
+				return true;
 			}
 
 			int level;
@@ -68,13 +69,15 @@ public class GchantCommand implements CommandExecutor {
 			try {
 				level = Integer.parseInt(args[2]);
 			} catch (NumberFormatException e) {
-				player.sendMessage(format(lang.getString("gchant-command.enchant.incorrect-args")));
-				return false;
+				player.sendMessage(colorify(lang.getString("gchant-command.enchant.incorrect-args")));
+				return true;
 			}
 
 			if (level < enchant.getMinLevel() || level > enchant.getMaxLevel()) {
-				player.sendMessage(format(lang.getString("gchant-command.enchant.invalid-level")));
-				return false;
+				player.sendMessage(colorify(lang.getString("gchant-command.enchant.invalid-level")
+					.replaceAll("%min-level%", Integer.toString(enchant.getMinLevel()))
+					.replaceAll("%max-level%", Integer.toString(enchant.getMaxLevel()))));
+				return true;
 			}
 
 			ItemStack item = player.getItemInHand();
@@ -84,22 +87,22 @@ public class GchantCommand implements CommandExecutor {
 
 			if (lore == null) lore = new ArrayList<>();
 
-			lore.add(0, format(enchant.getColor() + enchant.getName() + " " + GchantBase.getRomanNumberalUtil().encode(level))); // TODO: Add it to the bottom of the enchant list (to avoid weird formatting)
+			lore.add(0, colorify(enchant.getColor() + enchant.getName() + " " + RomanNumeralUtil.encode(level))); // TODO: Add it to the bottom of the enchant list (to avoid weird formatting)
 
 			meta.setLore(lore);
 			item.setItemMeta(meta);
 
-			player.sendMessage(format(lang.getString("gchant-command.enchant.enchanted")));
+			player.sendMessage(colorify(lang.getString("gchant-command.enchant.enchanted")));
 		} else {
 			if (!player.hasPermission("gchant.command.help")) {
-				player.sendMessage(format(lang.getString("no-permission")));
-				return false;
+				player.sendMessage(colorify(lang.getString("no-permission")));
+				return true;
 			}
 
 			for (String string : lang.getStringList("gchant-command.help")) {
-				player.sendMessage(format(string));
+				player.sendMessage(colorify(string));
 			}
 		}
-		return false;
+		return true;
 	}
 }
