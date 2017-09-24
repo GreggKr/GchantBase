@@ -2,10 +2,10 @@ package me.sirgregg.gchantbase.util;
 
 import java.util.TreeMap;
 
-public class RomanNumberalUtil {
-	private final TreeMap<Integer, String> encodeKey = new TreeMap<>();
+public class RomanNumeralUtil {
+	private static final TreeMap<Integer, String> encodeKey = new TreeMap<>();
 
-	public RomanNumberalUtil() {
+	static {
 		encodeKey.put(1000, "M");
 		encodeKey.put(900, "CM");
 		encodeKey.put(500, "D");
@@ -22,7 +22,7 @@ public class RomanNumberalUtil {
 	}
 
 	// TODO: redo
-	public String encode(int number) {
+	public static String encode(int number) {
 		int l = encodeKey.floorKey(number);
 
 		if (number == l) return encodeKey.get(number);
@@ -30,7 +30,7 @@ public class RomanNumberalUtil {
 	}
 
 	// TODO: redo
-	public int decode(String roman) {
+	public static int decode(String roman) {
 		int res = 0;
 
 		for (int i = 0; i < roman.length(); i++) {
@@ -53,7 +53,7 @@ public class RomanNumberalUtil {
 		return res;
 	}
 
-	private int value(char r) {
+	private static int value(char r) {
 		if (r == 'I')
 			return 1;
 		if (r == 'V')
