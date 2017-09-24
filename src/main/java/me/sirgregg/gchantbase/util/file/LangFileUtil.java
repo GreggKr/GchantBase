@@ -18,7 +18,7 @@ public class LangFileUtil extends YamlConfiguration {
 		return lang;
 	}
 	private LangFileUtil() {
-		file = new File(GchantBase.getPlugin(GchantBase.class).getDataFolder(), "lang.yml");
+		file = new File(GchantBase.getInstance().getDataFolder(), "lang.yml");
 		loadLang();
 	}
 
@@ -48,7 +48,7 @@ public class LangFileUtil extends YamlConfiguration {
 
 	public void saveDefaultLang() {
 		if (!file.exists()) {
-			GchantBase.getPlugin(GchantBase.class).saveResource("lang.yml", false);
+			GchantBase.getInstance().saveResource("lang.yml", false);
 		}
 	}
 }
