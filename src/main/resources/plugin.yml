@@ -16,3 +16,6 @@ permissions:
   gchant.command.enchant:
     description: Allows you to use /gc enchant
     default: op
+  gchant.command.list:
+    description: Allows you to use /gc list
+    default: true
