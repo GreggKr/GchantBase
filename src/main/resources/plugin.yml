@@ -7,7 +7,7 @@ author: SirGregg
 commands:
   gchant:
     description: Main command for GchantBase
-    aliases: [customenchant, ce, gc]
+    aliases: [customenchant, ce, gc, gchantbase]
 
 permissions:
   gchant.command.help:
