@@ -87,7 +87,7 @@ public class GchantCommand implements CommandExecutor {
 
 			if (lore == null) lore = new ArrayList<>();
 
-			lore.add(0, colorify(enchant.getColor() + enchant.getName() + " " + RomanNumeralUtil.encode(level))); // TODO: Add it to the bottom of the enchant list (to avoid weird formatting)
+			lore.add(lore.size() - 1, colorify(enchant.getColor() + enchant.getName() + " " + RomanNumeralUtil.encode(level))); // TODO: Add it to the bottom of the enchant list (to avoid weird formatting)
 
 			meta.setLore(lore);
 			item.setItemMeta(meta);
