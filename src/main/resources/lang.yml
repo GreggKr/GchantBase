@@ -3,7 +3,7 @@ no-permission: "&cYou do not have permission to do that."
 
 gchant-command:
   help:
-  - "&9-------------[ &bGchants &9]-------------"
+  - "&9-------------[ &bGChants &9]-------------"
   - "&9/gchant enchant <enchant> <level> - Enchants an item with a custom enchant."
   enchant:
     nothing-in-hand: "&cYou must have an item in your hand."

@@ -11,16 +11,16 @@ public class LangFileUtil extends YamlConfiguration {
     private static LangFileUtil lang;
     private final File file;
 
+    private LangFileUtil() {
+        file = new File(GchantBase.getInstance().getDataFolder(), "lang.yml");
+        loadLang();
+    }
+
     public static LangFileUtil getLang() {
         if (lang == null) {
             lang = new LangFileUtil();
         }
         return lang;
-    }
-
-    private LangFileUtil() {
-        file = new File(GchantBase.getInstance().getDataFolder(), "lang.yml");
-        loadLang();
     }
 
     public void loadLang() {

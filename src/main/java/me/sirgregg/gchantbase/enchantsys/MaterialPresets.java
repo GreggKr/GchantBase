@@ -16,8 +16,6 @@ public enum MaterialPresets {
             Material.LEATHER_LEGGINGS, Material.GOLD_LEGGINGS, Material.CHAINMAIL_LEGGINGS, Material.IRON_LEGGINGS, Material.DIAMOND_LEGGINGS,
             Material.LEATHER_BOOTS, Material.GOLD_BOOTS, Material.CHAINMAIL_BOOTS, Material.IRON_BOOTS, Material.DIAMOND_BOOTS),
 
-    BOW(Material.BOW), // for consistency
-
     SWORDS(Material.WOOD_SWORD, Material.STONE_SWORD, Material.GOLD_SWORD, Material.IRON_SWORD, Material.DIAMOND_SWORD),
     PICKAXES(Material.WOOD_PICKAXE, Material.STONE_PICKAXE, Material.GOLD_PICKAXE, Material.IRON_PICKAXE, Material.DIAMOND_PICKAXE),
     SHOVELS(Material.WOOD_SPADE, Material.STONE_SPADE, Material.GOLD_SPADE, Material.IRON_SPADE, Material.DIAMOND_SPADE),
@@ -33,7 +31,7 @@ public enum MaterialPresets {
         this.applicable = applicable;
     }
 
-    public List<Material> getApplicable() {
-        return Collections.unmodifiableList(Arrays.asList(applicable));
+    public Material[] getApplicable() {
+        return applicable;
     }
 }

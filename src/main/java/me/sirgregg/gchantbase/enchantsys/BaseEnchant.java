@@ -8,30 +8,21 @@ import org.bukkit.Material;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.Collections;
-import java.util.EnumSet;
+import java.util.Arrays;
 import java.util.Objects;
-import java.util.Set;
 
 public class BaseEnchant implements Listener {
-    private String name;
-    private Set<Material> applicable;
-    private ChatColor color;
-    private int minLevel;
-    private int maxLevel;
-
-    public BaseEnchant(String name, int minLevel, int maxLevel, ChatColor color, EnumSet<Material> applicable) {
-        this.name = name;
-        this.applicable = applicable;
-        this.color = color;
-        this.minLevel = minLevel;
-        this.maxLevel = maxLevel;
-
+    public BaseEnchant() {
         Bukkit.getPluginManager().registerEvents(this, GchantBase.getInstance());
     }
 
+
     public boolean isApplicable(ItemStack item) {
-        return applicable.contains(item.getType());
+        for (Material mat : getApplicable()) {
+            if (mat == item.getType()) return true;
+        }
+
+        return false;
     }
 
     public boolean hasEnchant(ItemStack item) {
@@ -40,18 +31,13 @@ public class BaseEnchant implements Listener {
         if (!item.getItemMeta().hasLore()) return false;
 
         for (String string : item.getItemMeta().getLore()) {
-            if (string.startsWith(color + name)) return true;
+            if (string.startsWith(getColor() + getName())) return true;
         }
         return false;
     }
 
     public boolean itemsHaveEnchants(ItemStack[] items) {
-        for (ItemStack item : items) {
-            if (hasEnchant(item)) {
-                continue;
-            } else return false;
-        }
-        return true;
+        return Arrays.stream(items).anyMatch(item -> getLevel(item) != -1);
     }
 
     public int getLevel(ItemStack item) {
@@ -60,31 +46,35 @@ public class BaseEnchant implements Listener {
         if (!hasEnchant(item)) return -1;
 
         for (String line : item.getItemMeta().getLore()) {
-            if (line.startsWith(color + name)) {
-                return RomanNumeralUtil.decode(line.substring(name.length() + 3));
+            if (line.startsWith(getColor() + getName())) {
+                return RomanNumeralUtil.decode(line.substring(getName().length() + 3));
             }
         }
 
         return -1;
     }
 
+    public Enchant getInfo() {
+        return getClass().getAnnotation(Enchant.class);
+    }
+
     public String getName() {
-        return name;
-    }
-
-    public Set<Material> getApplicable() {
-        return Collections.unmodifiableSet(applicable);
-    }
-
-    public int getMaxLevel() {
-        return maxLevel;
-    }
-
-    public int getMinLevel() {
-        return minLevel;
+        return getInfo().name();
     }
 
     public ChatColor getColor() {
-        return color;
+        return getInfo().color();
+    }
+
+    public Material[] getApplicable() {
+        return getInfo().applicable();
+    }
+
+    public int getMinLevel() {
+        return getInfo().minLevel();
+    }
+
+    public int getMaxLevel() {
+        return getInfo().maxLevel();
     }
 }
