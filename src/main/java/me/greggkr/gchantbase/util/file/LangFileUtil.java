@@ -1,6 +1,6 @@
-package me.sirgregg.gchantbase.util.file;
+package me.greggkr.gchantbase.util.file;
 
-import me.sirgregg.gchantbase.GchantBase;
+import me.greggkr.gchantbase.GchantBase;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 

@@ -1,7 +1,7 @@
-package me.sirgregg.gchantbase.enchantsys;
+package me.greggkr.gchantbase.enchantsys;
 
-import me.sirgregg.gchantbase.GchantBase;
-import me.sirgregg.gchantbase.util.RomanNumeralUtil;
+import me.greggkr.gchantbase.util.RomanNumeralUtil;
+import me.greggkr.gchantbase.GchantBase;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;

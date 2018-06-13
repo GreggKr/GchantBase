@@ -1,9 +1,9 @@
-package me.sirgregg.gchantbase.command;
+package me.greggkr.gchantbase.command;
 
-import me.sirgregg.gchantbase.GchantBase;
-import me.sirgregg.gchantbase.enchantsys.BaseEnchant;
-import me.sirgregg.gchantbase.util.RomanNumeralUtil;
-import me.sirgregg.gchantbase.util.file.LangFileUtil;
+import me.greggkr.gchantbase.enchantsys.BaseEnchant;
+import me.greggkr.gchantbase.util.RomanNumeralUtil;
+import me.greggkr.gchantbase.GchantBase;
+import me.greggkr.gchantbase.util.file.LangFileUtil;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -15,7 +15,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
-import static me.sirgregg.gchantbase.util.StringUtil.colorify;
+import static me.greggkr.gchantbase.util.StringUtil.colorify;
 
 public class GchantCommand implements CommandExecutor {
     private LangFileUtil lang = LangFileUtil.getLang();

@@ -18,9 +18,9 @@
         </plugins>
     </build>
 
-    <groupId>me.sirgregg.gchantbase</groupId>
+    <groupId>me.greggkr.gchantbase</groupId>
     <artifactId>GchantBase</artifactId>
-    <version>1.0</version>
+    <version>1.2.1</version>
 
     <dependencies>
         <!-- Spigot API -->

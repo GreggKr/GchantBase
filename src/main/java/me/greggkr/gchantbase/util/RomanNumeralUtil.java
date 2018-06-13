@@ -1,4 +1,4 @@
-package me.sirgregg.gchantbase.util;
+package me.greggkr.gchantbase.util;
 
 import java.util.TreeMap;
 

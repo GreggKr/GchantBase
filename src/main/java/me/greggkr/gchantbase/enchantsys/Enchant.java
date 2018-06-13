@@ -1,4 +1,4 @@
-package me.sirgregg.gchantbase.enchantsys;
+package me.greggkr.gchantbase.enchantsys;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
