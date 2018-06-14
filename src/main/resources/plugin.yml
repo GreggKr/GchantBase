@@ -1,5 +1,5 @@
 name: GchantBase
-main: me.sirgregg.gchantbase.GchantBase
+main: me.greggkr.gchantbase.GchantBase
 version: 1.2.1
 description: Base plugin for Gchant.
 author: SirGregg

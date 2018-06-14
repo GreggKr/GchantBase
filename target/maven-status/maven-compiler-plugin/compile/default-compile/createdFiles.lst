@@ -1,8 +1,8 @@
 me\greggkr\gchantbase\command\GchantCommand.class
 me\greggkr\gchantbase\enchantsys\BaseEnchant.class
+me\greggkr\gchantbase\GchantBase.class
 me\greggkr\gchantbase\enchantsys\Enchant.class
 me\greggkr\gchantbase\enchantsys\EnchantManager.class
 me\greggkr\gchantbase\util\StringUtil.class
-me\greggkr\gchantbase\util\file\LangFileUtil.class
-me\greggkr\gchantbase\GchantBase.class
 me\greggkr\gchantbase\util\RomanNumeralUtil.class
+me\greggkr\gchantbase\util\file\LangFileUtil.class
