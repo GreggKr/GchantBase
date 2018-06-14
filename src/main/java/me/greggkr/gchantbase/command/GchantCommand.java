@@ -1,8 +1,8 @@
 package me.greggkr.gchantbase.command;
 
+import me.greggkr.gchantbase.GchantBase;
 import me.greggkr.gchantbase.enchantsys.BaseEnchant;
 import me.greggkr.gchantbase.util.RomanNumeralUtil;
-import me.greggkr.gchantbase.GchantBase;
 import me.greggkr.gchantbase.util.file.LangFileUtil;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -88,7 +88,7 @@ public class GchantCommand implements CommandExecutor {
 
             if (lore == null) lore = new ArrayList<>();
 
-            lore.add(lore.size() - 1, colorify(enchant.getColor() + enchant.getName() + " " + RomanNumeralUtil.encode(level))); // TODO: Add it to the bottom of the enchant list (to avoid weird formatting)
+            lore.add(lore.size() == 0 ? 0 : -1, colorify(enchant.getColor() + enchant.getName() + " " + RomanNumeralUtil.encode(level))); // TODO: Add it to the bottom of the enchant list (to avoid weird formatting)
 
             meta.setLore(lore);
             item.setItemMeta(meta);
