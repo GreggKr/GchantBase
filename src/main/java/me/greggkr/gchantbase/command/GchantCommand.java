@@ -65,8 +65,14 @@ public class GchantCommand implements CommandExecutor {
                 return true;
             }
 
-            int level;
+            ItemStack item = player.getItemInHand();
 
+            if (!enchant.isApplicable(item)) {
+                player.sendMessage(colorify(lang.getString("gchant-command.enchant.not-applicable")));
+                return true;
+            }
+
+            int level;
             try {
                 level = Integer.parseInt(args[2]);
             } catch (NumberFormatException e) {
@@ -81,7 +87,6 @@ public class GchantCommand implements CommandExecutor {
                 return true;
             }
 
-            ItemStack item = player.getItemInHand();
             ItemMeta meta = item.getItemMeta();
 
             List<String> lore = meta.getLore();

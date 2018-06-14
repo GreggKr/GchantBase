@@ -2,7 +2,12 @@ package me.greggkr.gchantbase.enchantsys;
 
 import org.bukkit.inventory.ItemStack;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Objects;
 
 public class EnchantManager {
     private HashMap<String, BaseEnchant> registeredEnchants = new HashMap<>();
@@ -34,7 +39,12 @@ public class EnchantManager {
     }
 
     public BaseEnchant getEnchant(String name) {
-        if (registeredEnchants.containsKey(name)) return registeredEnchants.get(name);
+        for (String key : registeredEnchants.keySet()) {
+            if (key.equalsIgnoreCase(name)) {
+                return registeredEnchants.get(key);
+            }
+        }
+
         return null;
     }
 
