@@ -13,6 +13,7 @@ import java.util.Objects;
 
 public class BaseEnchant implements Listener {
     public BaseEnchant() {
+        GchantBase.getEnchantManager().registerEnchant(this);
         Bukkit.getPluginManager().registerEvents(this, GchantBase.getInstance());
     }
 

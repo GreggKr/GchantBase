@@ -20,7 +20,7 @@ public class EnchantManager {
 
     public void registerEnchant(BaseEnchant enchant) {
         if (!registeredEnchants.containsKey(enchant.getName())) {
-            registeredEnchants.put(enchant.getName(), enchant);
+            registeredEnchants.put(enchant.getName().replaceAll("\\s+", ""), enchant);
         }
     }
 
@@ -29,9 +29,7 @@ public class EnchantManager {
     }
 
     public void unregisterEnchant(BaseEnchant enchant) {
-        if (registeredEnchants.containsKey(enchant.getName())) {
-            registeredEnchants.remove(enchant.getName());
-        }
+        registeredEnchants.remove(enchant.getName());
     }
 
     public void unregisterEnchants(BaseEnchant... enchants) {
@@ -40,6 +38,8 @@ public class EnchantManager {
 
     public BaseEnchant getEnchant(String name) {
         for (String key : registeredEnchants.keySet()) {
+            key = key.replaceAll("\\s+", "");
+
             if (key.equalsIgnoreCase(name)) {
                 return registeredEnchants.get(key);
             }
